@@ -1,0 +1,26 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:recommended"
+  ],
+  "customDatasources": {
+    "fixture": {
+      "defaultRegistryUrlTemplate": "https://raw.githubusercontent.com/RenoTooth/renovate-issue-45328-fixtures/master/releases.json",
+      "format": "json"
+    }
+  },
+  "customManagers": [
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/fixture-version.txt/"
+      ],
+      "matchStrings": [
+        "fixture-version=(?<currentValue>[^\\s]+)"
+      ],
+      "depNameTemplate": "fixture",
+      "datasourceTemplate": "custom.fixture",
+      "versioningTemplate": "semver"
+    }
+  ]
+}
